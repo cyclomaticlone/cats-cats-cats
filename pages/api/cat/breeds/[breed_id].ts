@@ -15,5 +15,5 @@ export default async function handler(
   console.log(catData.length);
   // TODO: consider manipulation in the BE to reduce data being sent over the wire
 
-  res.status(200).json(catData);
+  res.status(200).json(catData.slice(0, 6));
 }
