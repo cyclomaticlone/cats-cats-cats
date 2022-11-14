@@ -7,3 +7,8 @@ export const getRandomCat = () =>
     headers,
   });
 
+export const getBreeds = () =>
+  fetch(`${ROOT_URL}/breeds`, {
+    headers,
+  });
+
