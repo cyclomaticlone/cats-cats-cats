@@ -1,10 +1,11 @@
-import { useState } from 'react';
-import { useCombobox } from 'downshift';
-import { Breed } from '../types/types';
+import { useState } from "react";
+import { useCombobox } from "downshift";
+import { Breed } from "../types/types";
 
 type Props = {
   breeds: Breed[];
   setSelectedBreed: (breed: Breed) => void;
+  isLoading: boolean;
 };
 
 const getBreedsFilter = (inputValue: string | undefined) => {
@@ -13,7 +14,7 @@ const getBreedsFilter = (inputValue: string | undefined) => {
   };
 };
 
-const BreedsDropdown = ({ breeds, setSelectedBreed }: Props) => {
+const BreedsDropdown = ({ breeds, setSelectedBreed, isLoading }: Props) => {
   const [filteredBreeds, setFilteredBreeds] = useState(breeds);
 
   const {
@@ -24,7 +25,7 @@ const BreedsDropdown = ({ breeds, setSelectedBreed }: Props) => {
     getInputProps,
     highlightedIndex,
     getItemProps,
-    selectItem,
+    toggleMenu,
     selectedItem,
   } = useCombobox<Breed>({
     items: filteredBreeds,
@@ -32,64 +33,63 @@ const BreedsDropdown = ({ breeds, setSelectedBreed }: Props) => {
       setFilteredBreeds(breeds.filter(getBreedsFilter(inputValue)));
     },
     itemToString(item) {
-      return item?.name || '';
+      return item?.name || "";
     },
-    // selectedItem: selectedBreed,
     onSelectedItemChange: ({ selectedItem: newSelectedBreed }) => {
       if (newSelectedBreed) {
         setSelectedBreed(newSelectedBreed);
       }
     },
+    id: "dogBreed",
   });
 
   return (
-    <div>
+    <div className="w-1/2 relative mb-4">
       <label
-        style={
-          {
-            // color: selectedItem ? selectedItem : 'black',
-          }
-        }
         {...getLabelProps()}
+        className="block w-full text-lg text-orange-500 mb-1"
       >
-        Choose a breed:
+        Select a breed:
       </label>
-      <input style={{ padding: '4px' }} {...getInputProps()} />
-      <button
-        style={{ padding: '4px 8px' }}
-        aria-label="toggle menu"
-        {...getToggleButtonProps()}
-      >
-        {isOpen ? <>&#8593;</> : <>&#8595;</>}
-      </button>
-      <button
-        style={{ padding: '4px 8px' }}
-        aria-label="toggle menu"
-        onClick={() => selectItem(null)}
-      >
-        &#10007;
-      </button>
+      <div className="w-full border-2  border-orange-500 flex">
+        <input
+          {...getInputProps({
+            disabled: isLoading,
+            placeholder: isLoading ? "Loading dog breeds..." : "",
+          })}
+          className="text-lg text-orange-500 bg-stone-900 hover:bg-stone-800 px-3 py-1 focus-visible:outline-none focus-visible:bg-stone-800 grow"
+        />
+        <button
+          className="text-lg text-orange-500 bg-stone-900 hover:bg-stone-800 px-3 py-1"
+          aria-label="toggle menu"
+          {...getToggleButtonProps()}
+          onClick={() => {
+            if (selectedItem && !isOpen) {
+              setFilteredBreeds(breeds);
+            }
+            toggleMenu();
+          }}
+        >
+          {isOpen ? <>&#8593;</> : <>&#8595;</>}
+        </button>
+      </div>
       <ul
         {...getMenuProps()}
-        style={{
-          listStyle: 'none',
-          width: '100%',
-          padding: '0',
-          margin: '4px 0 0 0',
-        }}
+        className={`text-lg absolute z-50 -z w-full list-none text-orange-500 bg-stone-800  overflow-y-scroll   border-orange-500 border-t-0 ${
+          isOpen ? "max-h-80 border-2" : ""
+        }`}
       >
         {isOpen &&
           filteredBreeds.map((item, index) => (
             <li
-              style={{
-                padding: '4px',
-                backgroundColor: highlightedIndex === index ? '#bde4ff' : null,
-              }}
               key={`${item.id}`}
               {...getItemProps({
                 item,
                 index,
               })}
+              className={`px-3 py-1 cursor-pointer ${
+                highlightedIndex === index ? "bg-stone-600" : ""
+              }`}
             >
               {item.name}
             </li>

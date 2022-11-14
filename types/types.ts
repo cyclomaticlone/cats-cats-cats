@@ -3,6 +3,7 @@ export type Cat = {
   url: string;
   width: number;
   height: number;
+  name?: string;
 };
 
 export type Breed = {
@@ -13,5 +14,6 @@ export type Breed = {
   life_span: string;
   alt_names: string;
   wikipedia_url: string;
+  cfa_url: string;
   origin: string;
 };
