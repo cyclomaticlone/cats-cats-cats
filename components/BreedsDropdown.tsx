@@ -57,7 +57,6 @@ const BreedsDropdown = ({ breeds, setSelectedBreed, isLoading }: Props) => {
             disabled: isLoading,
             placeholder: isLoading ? "Loading dog breeds..." : "",
             onFocus: () => {
-              console.log("focus");
               setFilteredBreeds(breeds);
             },
           })}
