@@ -4,7 +4,7 @@ Fullstack demo project with a back-end that fetches from 3rd party API (thecatap
 
 ## Requirements
 
-- Node v18 - We use the global Fetch API in the back-end API routes, which isn't in earlier versions of Node.
+- Node v16
 
 ## Secrets
 
@@ -64,3 +64,10 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the site.
+
+## Running with Docker
+
+Assuming you have Docker running on your machine:
+
+1. Build the container with `docker build -t cats-cats-cats-docker .`
+2. Build the container with `docker run -p 3000:3000 cats-cats-cats-docker`
