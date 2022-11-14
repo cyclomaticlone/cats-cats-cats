@@ -44,7 +44,7 @@ const BreedsDropdown = ({ breeds, setSelectedBreed, isLoading }: Props) => {
   });
 
   return (
-    <div className="w-1/2 relative mb-4">
+    <div className="w-full md:w-1/2 relative mb-4">
       <label
         {...getLabelProps()}
         className="block w-full text-lg text-orange-500 mb-1"
@@ -56,6 +56,10 @@ const BreedsDropdown = ({ breeds, setSelectedBreed, isLoading }: Props) => {
           {...getInputProps({
             disabled: isLoading,
             placeholder: isLoading ? "Loading dog breeds..." : "",
+            onFocus: () => {
+              console.log("focus");
+              setFilteredBreeds(breeds);
+            },
           })}
           className="text-lg text-orange-500 bg-stone-900 hover:bg-stone-800 px-3 py-1 focus-visible:outline-none focus-visible:bg-stone-800 grow"
         />
