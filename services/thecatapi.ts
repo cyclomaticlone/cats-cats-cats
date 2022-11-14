@@ -12,3 +12,12 @@ export const getBreeds = () =>
     headers,
   });
 
+export const getCatsByBreedId = (breedId: string, numberToGet: number = 6) => {
+  console.log(breedId);
+  return fetch(
+    `${ROOT_URL}/images/search?breedIds=${breedId}&limit=${numberToGet}`,
+    {
+      headers,
+    }
+  );
+};
