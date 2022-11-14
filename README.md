@@ -37,6 +37,10 @@ Tailwind's utility-first approach lets us style our UI in a fast and maintainabl
 
 React-Query is a best-in-class library that helps us fetch data. It provides easy-to-use abstractions for getting the data, loading state, and any potential errors from API calls, while having a powerful, customiserable cache. There is also a browser Devtools extension to help with debugging as the app gets more complex.
 
+### Downshift
+
+Downshift is a headless component that gives us abstractions to build an flexible, accessible (WAI-ARIA compliant) dropdown component, while allowing us the folly customise the UI.
+
 ## API Routes
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/cat/random](http://localhost:3000/api/cat/random). This endpoint can be edited in `pages/api/cat/random.ts`.
