@@ -20,7 +20,7 @@ Next.js is one of the most popular React-based frameworks today. Key reasons it 
 - File-system based routing makes it easy and predictable to find source files that correspond to a page route in the app (No more configuring react-router!)
 - Easy deployment on Vercel
 - First-class TypeScript support
-- It's compiler is extremely fast, allowing for a good deceloper experience when developing.
+- Its compiler is extremely fast, allowing for a good developer experience when developing.
 
 Some features not currently used in the app, but may be useful in the future:
 
@@ -35,7 +35,7 @@ Tailwind's utility-first approach lets us style our UI in a fast and maintainabl
 
 ### React-Query
 
-React-Query is a best-in-class library that helps us fetch data. It provides easy-to-use abstractions for getting the data, loading state, and any potential errors from API calls, while having a powerful, customiserable cache. There is also a browser Devtools extension to help with debugging as the app gets more complex.
+React-Query is a best-in-class library that helps us fetch data. It provides easy-to-use abstractions for getting the data, loading state, and any potential errors from API calls, while having a powerful, customisable cache. There is also a browser Devtools extension to help with debugging as the app gets more complex.
 
 ### Downshift
 
