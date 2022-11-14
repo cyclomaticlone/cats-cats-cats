@@ -35,14 +35,12 @@ const CatBreeds = () => {
     { enabled: Boolean(selectedBreed) }
   );
 
-  console.log(catsData);
-
   // TODO handle loading and error more gracefully
   if (isCatBreedsLoading) return <p>Loading...</p>;
 
   return (
-    <section>
-      <h2 className="text-5xl">Cat Breeds</h2>
+    <section className="w-full md:w-1/2 p-6 mt-4 mb-4">
+      <h2 className="text-5xl mb-4 text-orange-500">Cat Breeds</h2>
 
       <BreedsDropdown
         breeds={catBreedsData || []}
