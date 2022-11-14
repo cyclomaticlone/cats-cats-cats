@@ -18,7 +18,7 @@ const RandomCat = () => {
 
   // if (isFetching) return <p>Loading...</p>;
   return (
-    <section className="w-auto p-6 mt-4 mb-4 md:pl-0 md:pr-0 md:ml-6 md:mr-6 md:border-b-2 border-orange-500 ">
+    <section className="w-full md:w-auto p-6 mt-4 mb-4 md:pl-0 md:pr-0 md:ml-6 md:mr-6 md:border-b-2 border-orange-500 ">
       <h2 className="text-5xl mb-4 text-orange-500">Random Cat</h2>
       <div className="md:w-1/2 max-w-md md:pr-2">
         <button

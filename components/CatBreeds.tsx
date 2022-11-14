@@ -83,7 +83,7 @@ const CatBreeds = () => {
         )}
       </section>
 
-      <section className="flex flex-col md:flex-row md:flex-wrap">
+      <section className="flex flex-wrap">
         {(isCatsLoading || !catsData ? Array(6) : catsData).map((cat) => {
           return <Cat key={cat.id} cat={cat} className="w-1/2" />;
         })}
