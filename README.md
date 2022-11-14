@@ -46,7 +46,9 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 ### Available routes
 
 GET `api/cat/random` - Gets a random cat from thecatapi.com
+
 GET `api/cat/breeds` - Gets the list of cat breeds from thecatapi.com
+
 GET `api/cat/breeds/:breed_id` - Gets 6 cats of breed: `breed_id` from thecatapi.com
 
 ## Getting Started
