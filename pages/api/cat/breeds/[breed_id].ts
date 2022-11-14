@@ -12,6 +12,7 @@ export default async function handler(
   }
   const response = await getCatsByBreedId(breed_id as string, 6);
   const catData = (await response.json()) as Cat[];
+  console.log(catData.length);
   // TODO: consider manipulation in the BE to reduce data being sent over the wire
 
   res.status(200).json(catData);
