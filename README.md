@@ -6,6 +6,10 @@ Fullstack demo project with a back-end that fetches from 3rd party API (thecatap
 
 - Node v18 - We use the global Fetch API in the back-end API routes, which isn't in earlier versions of Node.
 
+## Secrets
+
+Some queries on thecatapi.com require an API key. This is configured in .env.local. A sample is provided in `.env.sample`.
+
 ## Tech Choices
 
 ### Next.js
