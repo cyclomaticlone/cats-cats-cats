@@ -11,7 +11,7 @@ export default async function handler(
     res.status(400).json({ message: "breed id must be provided as a string" });
   }
   const response = await getCatsByBreedId(breed_id as string, 6);
-  const catData: Cat[] = await response.json();
+  const catData = (await response.json()) as Cat[];
   // TODO: consider manipulation in the BE to reduce data being sent over the wire
 
   res.status(200).json(catData);
