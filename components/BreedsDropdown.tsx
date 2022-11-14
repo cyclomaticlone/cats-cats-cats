@@ -14,7 +14,7 @@ const getBreedsFilter = (inputValue: string | undefined) => {
 };
 
 const BreedsDropdown = ({ breeds, setSelectedBreed }: Props) => {
-  const [availableBreeds, setAvailableBreeds] = useState(breeds);
+  const [filteredBreeds, setFilteredBreeds] = useState(breeds);
 
   const {
     isOpen,
@@ -27,10 +27,9 @@ const BreedsDropdown = ({ breeds, setSelectedBreed }: Props) => {
     selectItem,
     selectedItem,
   } = useCombobox<Breed>({
-    items: availableBreeds,
+    items: filteredBreeds,
     onInputValueChange({ inputValue }) {
-      console.log(inputValue);
-      setAvailableBreeds(breeds.filter(getBreedsFilter(inputValue)));
+      setFilteredBreeds(breeds.filter(getBreedsFilter(inputValue)));
     },
     itemToString(item) {
       return item?.name || '';
@@ -44,33 +43,32 @@ const BreedsDropdown = ({ breeds, setSelectedBreed }: Props) => {
   });
 
   return (
-    <>
+    <div>
       <label
-        style={{
-          fontWeight: 'bolder',
-          color: selectedItem ? selectedItem : 'black',
-        }}
+        style={
+          {
+            // color: selectedItem ? selectedItem : 'black',
+          }
+        }
         {...getLabelProps()}
       >
         Choose a breed:
       </label>
-      <div>
-        <input style={{ padding: '4px' }} {...getInputProps()} />
-        <button
-          style={{ padding: '4px 8px' }}
-          aria-label="toggle menu"
-          {...getToggleButtonProps()}
-        >
-          {isOpen ? <>&#8593;</> : <>&#8595;</>}
-        </button>
-        <button
-          style={{ padding: '4px 8px' }}
-          aria-label="toggle menu"
-          onClick={() => selectItem(null)}
-        >
-          &#10007;
-        </button>
-      </div>
+      <input style={{ padding: '4px' }} {...getInputProps()} />
+      <button
+        style={{ padding: '4px 8px' }}
+        aria-label="toggle menu"
+        {...getToggleButtonProps()}
+      >
+        {isOpen ? <>&#8593;</> : <>&#8595;</>}
+      </button>
+      <button
+        style={{ padding: '4px 8px' }}
+        aria-label="toggle menu"
+        onClick={() => selectItem(null)}
+      >
+        &#10007;
+      </button>
       <ul
         {...getMenuProps()}
         style={{
@@ -81,7 +79,7 @@ const BreedsDropdown = ({ breeds, setSelectedBreed }: Props) => {
         }}
       >
         {isOpen &&
-          availableBreeds.map((item, index) => (
+          filteredBreeds.map((item, index) => (
             <li
               style={{
                 padding: '4px',
@@ -97,7 +95,7 @@ const BreedsDropdown = ({ breeds, setSelectedBreed }: Props) => {
             </li>
           ))}
       </ul>
-    </>
+    </div>
   );
 };
 
